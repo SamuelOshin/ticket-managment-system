@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if request.user.is_staff %}
+
+<section class="container mt-2">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <div class="d-flex align-items-center">
+        <img src="{% static 'css/undraw_Welcoming_re_x0qo.png' %}" alt="welcome-png" class="img-fluid rounded" style="max-width: 300px;">
+        <div class="ms-3">
+          <h1 class="display-5 fw-bold">Staff Dashboard</h1>
+          <h2 class="col-md-8 fs-4">Welcome, {{request.user.username}}!</h2>
+          <p class="col fs-4">Create a ticket to submit your request or report an issue. Our team is here to assist you.</p>
+          <a class="btn btn-primary btn-lg" href="{% url 'create-ticket' %}">Click Here!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+{% elif request.user.is_engineer %}
+
+<section class="container mt-2">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <div class="d-flex align-items-center">
+        <img src="{% static 'css/undraw_Welcoming_re_x0qo.png' %}" alt="welcome-png" class="img-fluid rounded" style="max-width: 300px;">
+        <div class="ms-3">
+          <h1 class="display-5 fw-bold">Engineer Dashboard</h1>
+          <h2 class="col-md-8 fs-4">Welcome, {{request.user.username}}!</h2>
+          <p class="col fs-4">View All Pending and New Tickects Sent by Staffs.</p>
+          <a class="btn btn-primary btn-lg" href="{% url 'ticket-queue' %}">Click Here!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endif %}
+{% endblock content %}

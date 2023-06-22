@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>Update Ticket</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" value="{{ form.title.value }}" class="form-control" id="title" placeholder="Enter title here">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="description" rows="4" placeholder="Enter description here">{{ form.description.value }}</textarea>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+{% endblock content %}
