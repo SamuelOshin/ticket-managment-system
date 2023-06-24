@@ -20,5 +20,9 @@ class Ticket(models.Model):
     ticket_status = models.CharField(max_length=15, choices=status_choices)
 
 
+    class Meta:
+        db_table = 'tickets'
+
+
     def __str__(self):
         return self.title
